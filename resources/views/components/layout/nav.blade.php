@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto h-16 flex items-center justify-between">
         <div>
             <a href="/">
-                <img src="/images/logo1.png" alt="Logo" class="h-8 w-auto object-cover object-top block">
+                <img src="/images/logo1.png" alt="Idea logo" class="h-8 w-auto object-cover object-top block">
             </a>
         </div>
 
