@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Models\User;
 
 class RegisteredUserController extends Controller
 {
@@ -21,7 +23,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'string', 'min:8', 'max:255'],
         ]);
 
-        $user= User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),

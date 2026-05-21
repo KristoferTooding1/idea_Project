@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Enums;
+declare(strict_types=1);
 
+namespace App\Enums;
 
 enum IdeaStatus: string
 {
@@ -16,5 +17,10 @@ enum IdeaStatus: string
             self::IN_PROGRESS => 'In Progress',
             self::COMPLETED => 'Completed',
         };
+    }
+
+    public static function values(): array
+    {
+        return array_map(fn (IdeaStatus $status) => $status->value, self::cases());
     }
 }
