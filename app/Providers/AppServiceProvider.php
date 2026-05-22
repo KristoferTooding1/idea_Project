@@ -12,8 +12,6 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    #[Override]
-    #[\Override]
     public function register(): void
     {
         //
