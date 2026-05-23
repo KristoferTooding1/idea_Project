@@ -57,18 +57,26 @@
             </div>   
         </div>
         <x-modal name="create-idea" title="New Idea">
-            <form 
-                    x-data="{ 
-                        status: 'pending',
-                        newLink: '',
-                        links: [],
-                        newStep: '',
-                        steps: []
-                    }" 
-                    method="POST" 
+            <form
+                x-data="{
+                    status : 'pending',
+                    newLink: '',
+                    links: [],
+                    newStep: '',
+                    steps: [],
+                    hasImage: false
+                    }"
                     action="{{ route('idea.store') }}"
-                    enctype="multipart/form-data"
-                >
+                    method="POST"
+                    class="space-y-4"
+                    x-bind:enctype="hasImage ? 'multipart/form-data' : false"
+                    <input 
+                        type="file" 
+                        name="image" 
+                        accept="image/*" 
+                        @change="hasImage = $event.target.files.length > 0" 
+                    />
+
                 @csrf
 
                 <div class="space-y-6">

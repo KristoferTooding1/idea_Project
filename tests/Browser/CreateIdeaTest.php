@@ -1,10 +1,9 @@
 <?php
 
 use App\Models\User;
-use App\Models\Idea;
 
-it('creates a new idea', function() {
-    $this->actingAs($user = User::factory()->create()); 
+it('creates a new idea', function () {
+    $this->actingAs($user = User::factory()->create());
 
     visit('/ideas')
         ->click('@create-idea-button')
@@ -18,10 +17,10 @@ it('creates a new idea', function() {
         ->click('Create')
         ->assertPathIs('/ideas');
 
-        expect($user->ideas()->first())->toMatchArray([
-            'title' => 'Some example Title',
-            'status' => 'completed',
-            'description' => 'An example description',
-            'links' => ['https://laracasts.com', 'https://laravel.com'],
-        ]);
+    expect($user->ideas()->first())->toMatchArray([
+        'title' => 'Some example Title',
+        'status' => 'completed',
+        'description' => 'An example description',
+        'links' => ['https://laracasts.com', 'https://laravel.com'],
+    ]);
 });
