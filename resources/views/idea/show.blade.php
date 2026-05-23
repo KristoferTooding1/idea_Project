@@ -31,7 +31,26 @@
             <x-card class="mt-6">
                 <div class="text-foreground prose prose-invert max-w-none cursor-pointer">{{ $idea->description }}</div>
             </x-card> 
-            
+
+            @if ($idea->steps->count())
+                <div>
+                    <h3 class="font-bold text-xl">Actionable Steps</h3>
+                    <div class="mt-3 space-y-2">
+                        @foreach ($idea->steps as $step)
+                            <x-card>
+                                <form method="POST" action="{{ route('step.update', $step) }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <div class="flex items-center gap-x-3">
+                                        <button type="submit" role="checkbox" class="size-5 flex items-center justify-center rounded-lg text-primary-foreground {{ $step->completed ? 'bg-primary' : 'border border-primary' }}">&check;</button>
+                                        <span class="{{ $step->completed ? 'line-through text-muted-foreground': ''}}">{{ $step->description   }}</span>
+                                    </div>
+                                </form>
+                            </x-card>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
 
             @if ($idea->links->count())
             <div>
