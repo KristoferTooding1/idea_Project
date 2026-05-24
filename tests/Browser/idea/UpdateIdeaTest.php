@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use App\Models\Idea;
+use App\Models\User;
 
 it('shows the initial input state', function () {
     $this->actingAs($user = User::factory()->create());

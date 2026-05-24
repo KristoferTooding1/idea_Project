@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Actions\CreateIdea;
+use App\Actions\UpdateIdea;
 use App\Enums\IdeaStatus;
 use App\Http\Requests\IdeaRequest;
-use App\Http\Requests\UpdateIdeaRequest;
 use App\Models\Idea;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Actions\UpdateIdea;
 use Illuminate\Support\Facades\Gate;
 
 class IdeaController extends Controller
@@ -60,6 +59,7 @@ class IdeaController extends Controller
     public function show(Idea $idea)
     {
         Gate::authorize('workWith', $idea);
+
         return view('idea.show', [
             'idea' => $idea,
         ]);

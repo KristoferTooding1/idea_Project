@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Actions;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +14,8 @@ class CreateIdea
     {
         //
     }
-    public function handle(array $attributes)
+
+    public function handle(array $attributes): void
     {
         $data = collect($attributes)->only([
             'title',

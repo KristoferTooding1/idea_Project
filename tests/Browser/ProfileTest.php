@@ -27,14 +27,14 @@ it('edits a profile', function () {
     ]);
 });
 
-it('notifies the original email if updated', function() {
+it('notifies the original email if updated', function () {
     $user = User::factory()->create();
 
     $this->actingAs($user);
 
     Notification::fake();
 
-    $originalEmail =$user->email;
+    $originalEmail = $user->email;
 
     visit(route('profile.edit'))
         ->assertValue('name', $user->name)
@@ -42,9 +42,5 @@ it('notifies the original email if updated', function() {
         ->click('Update profile')
         ->assertSee('Profile updated!');
 
-    Notification::assertSentOnDemand(EmailChanged::class, function (EmailChanged $notification, $routes, $notifiable) use ($originalEmail) {
-    
-    return $notifiable->routes['mail'] === $originalEmail;
-
-    });
+    Notification::assertSentOnDemand(EmailChanged::class, fn (EmailChanged $notification, $routes, $notifiable) => $notifiable->routes['mail'] === $originalEmail);
 });

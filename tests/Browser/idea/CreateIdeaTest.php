@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-use App\Models\Idea;
 
 it('creates a new idea', function () {
     $this->actingAs($user = User::factory()->create());

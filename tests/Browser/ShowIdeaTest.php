@@ -3,7 +3,6 @@
 use App\Models\Idea;
 use App\Models\User;
 
-
 it('requires authentication', function () {
     $idea = Idea::factory()->create();
 
